@@ -134,7 +134,6 @@ function Curriculum({ band }) {
           <span className="kicker">The Curriculum</span>
           <h2>Seven kinds of writing,<br/>one growing writer.</h2>
           <p>
-            Each genre is taught twice — once to build the basics, then again with real craft.
             You're viewing what students do in{" "}
             <strong style={{ color: "var(--accent)" }}>{band === "g56" ? "Grades 5–6" : "Grades 3–4"}</strong>.
             Flip the switch to compare.
