@@ -76,6 +76,7 @@ function Hero({ band, setBand }) {
           ["7", "writing types mastered"],
           ["3–6", "grade levels covered"],
           ["4 wks", "to a first published piece"],
+          ["1:6", "teacher to student ratio"],
         ].map(([n, l]) => (
           <div key={l} style={hs.stat}>
             <div style={hs.statN}>{n}</div>
@@ -315,7 +316,7 @@ function Level1() {
               <p className="hand" style={ls.prereqLine}>{LEVEL1.prereqLine}</p>
               <div style={ls.prereqBox}>{LEVEL1.prereq}</div>
               <div style={ls.metaRow}>
-                {[["Duration", LEVEL1.duration], ["Format", LEVEL1.format], ["Focus", LEVEL1.focus]].map(([k, v]) => (
+                {[["Duration", LEVEL1.duration], ["Format", LEVEL1.format], ["Focus", LEVEL1.focus], ["Class Size", "1 : 6"]].map(([k, v]) => (
                   <div key={k} style={ls.meta}>
                     <div style={ls.metaK}>{k}</div>
                     <div style={ls.metaV}>{v}</div>
