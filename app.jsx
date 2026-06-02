@@ -132,7 +132,7 @@ function PricingStrip() {
     <section style={prs.strip}>
       <div className="wrap" style={prs.inner}>
         <div style={prs.label}>
-          <span style={prs.eyebrow}>Simple pricing</span>
+          <span style={prs.eyebrow}>Program pricing</span>
           <span style={prs.tagline}>Start free. Grow at your own pace.</span>
         </div>
 

@@ -170,7 +170,7 @@ const ms = {
   thanksIcon: { fontSize: 52, marginBottom: 16 },
   thanksTitle: { fontSize: 32, margin: "0 0 10px" },
   thanksSub: { fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 32px" },
-  thanksBtn: { minWidth: 160 },
+  thanksBtn: { minWidth: 160, justifyContent: "center" },
 };
 
 Object.assign(window, { hs, cs, ps, ls, fs, ms, prs });
