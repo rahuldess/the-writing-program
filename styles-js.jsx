@@ -126,4 +126,25 @@ const fs = {
   footNote: { color: "var(--ink-faint)", fontSize: 15 },
 };
 
-Object.assign(window, { hs, cs, ps, ls, fs });
+const ms = {
+  backdrop: { position: "fixed", inset: 0, background: "rgba(18,30,20,.55)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: 20, backdropFilter: "blur(3px)" },
+  modal: { position: "relative", background: "var(--paper)", borderRadius: "var(--r-xl)", boxShadow: "var(--shadow-lg)", width: "100%", maxWidth: 520, padding: "44px 40px 40px", maxHeight: "90vh", overflowY: "auto", boxSizing: "border-box" },
+  close: { position: "absolute", top: 16, right: 18, background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "var(--ink-faint)", lineHeight: 1, padding: 4, display: "flex", alignItems: "center", justifyContent: "center" },
+  head: { marginBottom: 28 },
+  headHand: { fontSize: 24, color: "var(--terra)" },
+  title: { fontSize: "clamp(26px, 4vw, 34px)", margin: "6px 0 10px" },
+  sub: { fontSize: 16.5, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0 },
+  form: { display: "flex", flexDirection: "column", gap: 18 },
+  label: { display: "flex", flexDirection: "column", gap: 7, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 15, color: "var(--ink)" },
+  input: { fontFamily: "var(--font-body, inherit)", fontSize: 16, color: "var(--ink)", background: "var(--paper-2)", border: "1.5px solid var(--line)", borderRadius: "var(--r-sm)", padding: "11px 14px", outline: "none", width: "100%", boxSizing: "border-box", transition: "border-color .2s" },
+  select: { appearance: "none", cursor: "pointer", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\")", backgroundRepeat: "no-repeat", backgroundPosition: "right 14px center" },
+  row: { display: "flex", gap: 14 },
+  submit: { marginTop: 6, width: "100%", justifyContent: "center", fontSize: 17 },
+  thanks: { display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "24px 0 8px" },
+  thanksIcon: { fontSize: 52, marginBottom: 16 },
+  thanksTitle: { fontSize: 32, margin: "0 0 10px" },
+  thanksSub: { fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 32px" },
+  thanksBtn: { minWidth: 160 },
+};
+
+Object.assign(window, { hs, cs, ps, ls, fs, ms });

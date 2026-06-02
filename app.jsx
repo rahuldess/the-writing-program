@@ -1,6 +1,6 @@
 // app.jsx — The Complete Writer Program microsite
 const { useState, useEffect, useRef } = React;
-const { hs, cs, ps, ls, fs } = window;
+const { hs, cs, ps, ls, fs, ms } = window;
 
 /* ---------- family color helpers ---------- */
 const FAM = {
@@ -321,9 +321,106 @@ function Level1() {
 }
 
 /* ===================================================================== */
+/* INTEREST MODAL                                                        */
+/* ===================================================================== */
+function InterestModal({ onClose }) {
+  const [form, setForm] = useState({ parentName: "", kidsName: "", age: "", grade: "", location: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  function set(k, v) { setForm(f => ({ ...f, [k]: v })); }
+
+  useEffect(() => {
+    function onKey(e) { if (e.key === "Escape") onClose(); }
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  function handleBackdrop(e) { if (e.target === e.currentTarget) onClose(); }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <div style={ms.backdrop} onClick={handleBackdrop}>
+      <div style={ms.modal} role="dialog" aria-modal="true" aria-label="Stay in the loop">
+        <button style={ms.close} onClick={onClose} aria-label="Close">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+
+        {submitted ? (
+          <div style={ms.thanks}>
+            <span style={ms.thanksIcon}>✎</span>
+            <h3 style={ms.thanksTitle}>You're on the list!</h3>
+            <p style={ms.thanksSub}>We'll be in touch as soon as enrolment opens at your location.</p>
+            <button className="btn btn-primary" onClick={onClose} style={ms.thanksBtn}>Done</button>
+          </div>
+        ) : (
+          <>
+            <div style={ms.head}>
+              <span className="hand" style={ms.headHand}>let's connect…</span>
+              <h2 style={ms.title}>Keep me posted</h2>
+              <p style={ms.sub}>Tell us a little about your family and we'll reach out when enrolment opens near you.</p>
+            </div>
+            <form onSubmit={handleSubmit} style={ms.form}>
+              <label style={ms.label}>
+                Parent name
+                <input required style={ms.input} value={form.parentName}
+                  onChange={e => set("parentName", e.target.value)} placeholder="e.g. Sarah" />
+              </label>
+
+              <label style={ms.label}>
+                Kid(s) name
+                <input required style={ms.input} value={form.kidsName}
+                  onChange={e => set("kidsName", e.target.value)} placeholder="e.g. Emma, Liam" />
+              </label>
+
+              <div style={ms.row}>
+                <label style={{ ...ms.label, flex: 1 }}>
+                  Child's age
+                  <input required style={ms.input} type="number" min="7" max="13"
+                    value={form.age} onChange={e => set("age", e.target.value)} placeholder="e.g. 9" />
+                </label>
+                <label style={{ ...ms.label, flex: 1 }}>
+                  Child's grade
+                  <input required style={ms.input} value={form.grade}
+                    onChange={e => set("grade", e.target.value)} placeholder="e.g. Grade 4" />
+                </label>
+              </div>
+
+              <label style={ms.label}>
+                Location
+                <select required style={{ ...ms.input, ...ms.select }} value={form.location}
+                  onChange={e => set("location", e.target.value)}>
+                  <option value="" disabled>Choose a location…</option>
+                  <option value="surrey-clayton">Surrey – Clayton</option>
+                  <option value="surrey-city-centre">Surrey – City Centre</option>
+                  <option value="surrey-fleetwood">Surrey – Fleetwood</option>
+                </select>
+              </label>
+
+              <button type="submit" className="btn btn-primary" style={ms.submit}>
+                Count me in →
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ===================================================================== */
 /* CTA + FOOTER                                                          */
 /* ===================================================================== */
 function CTA() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <section id="enroll" className="section" style={{ paddingTop: 0 }}>
       <div className="wrap">
@@ -333,7 +430,10 @@ function CTA() {
           <h2 style={fs.ctaTitle}>Give your child the gift<br/>of finding their words.</h2>
           <p style={fs.ctaSub}>Confident writing is a skill for life — for every essay, application, and idea still to come.</p>
           <div style={fs.ctaBtns}>
-            <a href="#" className="btn btn-primary" style={{ background: "#fff", color: "var(--green-deep)" }}>I'm interested — keep me posted</a>
+            <button className="btn btn-primary" style={{ background: "#fff", color: "var(--green-deep)", border: "none", cursor: "pointer" }}
+              onClick={() => setModalOpen(true)}>
+              I'm interested — keep me posted
+            </button>
           </div>
         </div>
         <footer style={fs.footer}>
@@ -341,6 +441,8 @@ function CTA() {
           <span style={fs.footNote}>Grades 3–6 · Foundations to fluency</span>
         </footer>
       </div>
+
+      {modalOpen && <InterestModal onClose={() => setModalOpen(false)} />}
     </section>
   );
 }
