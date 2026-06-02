@@ -142,7 +142,8 @@ function Curriculum({ band }) {
             <span style={cs.prereqRibbonIcon} aria-hidden="true">1</span>
             <span style={cs.prereqRibbonText}>
               <strong>Every form below begins with the paragraph.</strong> Level 1 builds that
-              foundation first — it's the prerequisite that makes all seven genres possible.
+              foundation first — it's the prerequisite that makes all seven genres possible.{" "}
+              <strong style={{ color: "var(--green-deep)" }}>Level 1 is free. Each module after is $89.</strong>
             </span>
             <a href="#level1" style={cs.prereqLink}>Start with Level 1 →</a>
           </div>
@@ -173,9 +174,12 @@ function TypeCard({ w, band, index }) {
       <p style={cs.blurb}>{w.blurb}</p>
       <div style={cs.divider} />
       <p style={cs.cardText} key={band}>{text}</p>
-      <span style={{ ...cs.levelTag, background: f.tint, color: f.d }}>
-        {band === "g56" ? "Grades 5–6 · with craft" : "Grades 3–4 · foundation"}
-      </span>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
+        <span style={{ ...cs.levelTag, background: f.tint, color: f.d }}>
+          {band === "g56" ? "Grades 5–6 · with craft" : "Grades 3–4 · foundation"}
+        </span>
+        <span style={cs.priceTag}>$89</span>
+      </div>
     </article>
   );
 }
@@ -264,6 +268,7 @@ function Level1() {
           <div style={ls.bannerInner}>
             <div style={ls.bannerLeft}>
               <span className="chip" style={ls.startChip}>★ Required first step · the foundation</span>
+              <span className="chip" style={ls.freeChip}>FREE</span>
               <h2 style={ls.h2}>Level 1: The Paragraph Foundation</h2>
               <p className="hand" style={ls.prereqLine}>{LEVEL1.prereqLine}</p>
               <div style={ls.prereqBox}>{LEVEL1.prereq}</div>
@@ -274,6 +279,10 @@ function Level1() {
                     <div style={ls.metaV}>{v}</div>
                   </div>
                 ))}
+                <div style={ls.meta}>
+                  <div style={ls.metaK}>Price</div>
+                  <div style={{ ...ls.metaV, color: "var(--green-deep)" }}>FREE</div>
+                </div>
               </div>
             </div>
           </div>

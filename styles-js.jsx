@@ -49,6 +49,7 @@ const cs = {
   prereqRibbonIcon: { flex: "0 0 auto", width: 34, height: 34, borderRadius: 999, background: "var(--amber)", display: "grid", placeItems: "center", color: "#fff", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18 },
   prereqRibbonText: { flex: 1, minWidth: 240, fontSize: 16, color: "var(--ink)", lineHeight: 1.45 },
   prereqLink: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 15, color: "var(--green-deep)", textDecoration: "none", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 6, borderBottom: "2px solid var(--green)" },
+  priceTag: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 14, padding: "6px 13px", borderRadius: 999, background: "var(--green-tint)", color: "var(--green-deep)", border: "1.5px solid var(--green)" },
 };
 
 const ps = {
@@ -73,7 +74,8 @@ const ls = {
   bannerGlow: { position: "absolute", top: -120, right: -120, width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle, var(--amber-tint) 0%, transparent 70%)", pointerEvents: "none" },
   bannerInner: { position: "relative" },
   bannerLeft: { maxWidth: 760 },
-  startChip: { background: "var(--amber-tint)", borderColor: "transparent", color: "var(--amber-deep)", fontWeight: 600, marginBottom: 18 },
+  startChip: { background: "var(--amber-tint)", borderColor: "transparent", color: "var(--amber-deep)", fontWeight: 600, marginBottom: 18, marginRight: 10 },
+  freeChip: { background: "var(--green-tint)", border: "2px solid var(--green)", color: "var(--green-deep)", fontWeight: 700, fontSize: 15, letterSpacing: "0.06em", marginBottom: 18, padding: "6px 16px", borderRadius: 999 },
   h2: { fontSize: "clamp(32px, 4.4vw, 46px)", marginBottom: 16 },
   intro: { fontSize: 18.5, color: "var(--ink-soft)", lineHeight: 1.6 },
 
