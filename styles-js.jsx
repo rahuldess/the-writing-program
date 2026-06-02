@@ -115,6 +115,30 @@ const ls = {
   oText: { fontSize: 16.5, fontWeight: 600, lineHeight: 1.35 },
 };
 
+const prs = {
+  strip: { background: "var(--paper-2)", borderTop: "1.5px solid var(--line)", borderBottom: "1.5px solid var(--line)", padding: "36px 0" },
+  inner: { display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" },
+  label: { flex: "0 0 auto", display: "flex", flexDirection: "column", gap: 6, minWidth: 180 },
+  eyebrow: { fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--ink-faint)" },
+  tagline: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 20, color: "var(--ink)", lineHeight: 1.2 },
+
+  cards: { flex: 1, display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" },
+  card: { flex: "1 1 220px", borderRadius: "var(--r-md)", padding: "20px 22px", border: "1.5px solid var(--line)", background: "var(--paper)", boxShadow: "var(--shadow-sm)" },
+  cardFree: { borderColor: "var(--green)", background: "var(--green-tint)" },
+  cardPaid: { borderColor: "var(--line)" },
+
+  cardTop: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 },
+  step: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--ink-faint)" },
+
+  freeBadge: { fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 18, color: "var(--green-deep)", background: "var(--paper)", border: "2px solid var(--green)", borderRadius: 999, padding: "3px 14px", letterSpacing: "0.06em" },
+  priceBadge: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, color: "var(--ink)", background: "var(--paper-2)", border: "1.5px solid var(--line)", borderRadius: 999, padding: "3px 14px" },
+
+  cardName: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 17, color: "var(--ink)", marginBottom: 6 },
+  cardDesc: { fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.5 },
+
+  arrow: { flex: "0 0 auto", display: "flex", alignItems: "center" },
+};
+
 const fs = {
   cta: { position: "relative", overflow: "hidden", background: "linear-gradient(135deg, var(--green-deep), var(--green))", borderRadius: "var(--r-xl)", padding: "72px 40px 78px", textAlign: "center", color: "#fff", boxShadow: "var(--shadow-lg)" },
   ctaDots: { position: "absolute", inset: 0, opacity: 0.18, pointerEvents: "none", backgroundImage: "radial-gradient(rgba(255,255,255,.7) 1.4px, transparent 1.4px)", backgroundSize: "28px 28px" },
@@ -149,4 +173,4 @@ const ms = {
   thanksBtn: { minWidth: 160 },
 };
 
-Object.assign(window, { hs, cs, ps, ls, fs, ms });
+Object.assign(window, { hs, cs, ps, ls, fs, ms, prs });

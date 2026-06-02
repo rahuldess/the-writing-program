@@ -1,6 +1,6 @@
 // app.jsx — The Complete Writer Program microsite
 const { useState, useEffect, useRef } = React;
-const { hs, cs, ps, ls, fs, ms } = window;
+const { hs, cs, ps, ls, fs, ms, prs } = window;
 
 /* ---------- family color helpers ---------- */
 const FAM = {
@@ -120,6 +120,48 @@ function PaperCard({ band }) {
       </div>
       <div style={hs.bandBadge}>{band === "g56" ? "Grades 5–6" : "Grades 3–4"}</div>
     </div>
+  );
+}
+
+/* ===================================================================== */
+/* PRICING STRIP                                                         */
+/* ===================================================================== */
+function PricingStrip() {
+  return (
+    <section style={prs.strip}>
+      <div className="wrap" style={prs.inner}>
+        <div style={prs.label}>
+          <span style={prs.eyebrow}>Simple pricing</span>
+          <span style={prs.tagline}>Start free. Grow at your own pace.</span>
+        </div>
+
+        <div style={prs.cards}>
+          {/* Level 1 — free */}
+          <div style={{ ...prs.card, ...prs.cardFree }}>
+            <div style={prs.cardTop}>
+              <span style={prs.step}>Level 1</span>
+              <span style={prs.freeBadge}>FREE</span>
+            </div>
+            <div style={prs.cardName}>The Paragraph Foundation</div>
+            <div style={prs.cardDesc}>The required first step — 4 weeks, face-to-face. No cost to begin.</div>
+          </div>
+
+          <div style={prs.arrow} aria-hidden="true">
+            <svg viewBox="0 0 32 16" width="36" height="18" fill="none" stroke="var(--ink-faint)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 8h26M22 2l7 6-7 6"/></svg>
+          </div>
+
+          {/* Modules 2+ — $89 */}
+          <div style={{ ...prs.card, ...prs.cardPaid }}>
+            <div style={prs.cardTop}>
+              <span style={prs.step}>Each module after</span>
+              <span style={prs.priceBadge}>$89</span>
+            </div>
+            <div style={prs.cardName}>7 writing types to explore</div>
+            <div style={prs.cardDesc}>Narrative, poetry, persuasive, and more — unlock each one as you go.</div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -569,6 +611,7 @@ function App() {
   return (
     <div>
       <Hero band={band} setBand={setBand} />
+      <PricingStrip />
       <Curriculum band={band} />
       <Progression band={band} />
       <Level1 />
