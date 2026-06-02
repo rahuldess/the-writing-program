@@ -324,10 +324,19 @@ function Level1() {
 /* INTEREST MODAL                                                        */
 /* ===================================================================== */
 function InterestModal({ onClose }) {
-  const [form, setForm] = useState({ parentName: "", kidsName: "", age: "", grade: "", location: "" });
+  const [form, setForm] = useState({
+    parentName: "", email: "", phone: "",
+    kidsName: "", age: "", grade: "", location: "",
+  });
+  const [errors, setErrors]   = useState({});
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  function set(k, v) { setForm(f => ({ ...f, [k]: v })); }
+  function set(k, v) {
+    setForm(f => ({ ...f, [k]: v }));
+    if (errors[k]) setErrors(e => ({ ...e, [k]: "" }));
+  }
 
   useEffect(() => {
     function onKey(e) { if (e.key === "Escape") onClose(); }
@@ -341,10 +350,53 @@ function InterestModal({ onClose }) {
 
   function handleBackdrop(e) { if (e.target === e.currentTarget) onClose(); }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setSubmitted(true);
+  function validate() {
+    const errs = {};
+    if (!form.parentName.trim())  errs.parentName = "Please enter your name";
+    if (!form.email.trim())       errs.email = "Please enter your email";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) errs.email = "Please enter a valid email";
+    if (!form.kidsName.trim())    errs.kidsName = "Please enter your child's name";
+    if (!form.age)                errs.age = "Required";
+    if (!form.grade.trim())       errs.grade = "Required";
+    if (!form.location)           errs.location = "Please choose a location";
+    return errs;
   }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+
+    setLoading(true);
+    setApiError("");
+
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      name:          form.parentName.trim(),
+      email:         form.email.trim(),
+      phone:         form.phone.trim() || null,
+      location:      form.location,
+      program:       "The Complete Writer Program",
+      children:      [{ name: form.kidsName.trim(), age: Number(form.age), grade: form.grade.trim() }],
+      page_url:      window.location.href,
+      referrer:      document.referrer || null,
+      utm_medium:    params.get("utm_medium")   || null,
+      utm_campaign:  params.get("utm_campaign") || null,
+      traffic_source: sessionStorage.getItem("traffic_source") || null,
+    };
+
+    const { error } = await window._sb.from("program_leads").insert(payload);
+
+    setLoading(false);
+    if (error) {
+      setApiError("Something went wrong — please try again or email us directly.");
+    } else {
+      setSubmitted(true);
+    }
+  }
+
+  const ERR       = { fontSize: 13, color: "var(--terra)", marginTop: -2 };
+  const INPUT_ERR = { borderColor: "var(--terra)" };
 
   return (
     <div style={ms.backdrop} onClick={handleBackdrop}>
@@ -367,45 +419,79 @@ function InterestModal({ onClose }) {
               <h2 style={ms.title}>Keep me posted</h2>
               <p style={ms.sub}>Tell us a little about your family and we'll reach out when enrolment opens near you.</p>
             </div>
-            <form onSubmit={handleSubmit} style={ms.form}>
+
+            {apiError && (
+              <div style={{ padding: "12px 16px", background: "#fff5f5", border: "1.5px solid var(--terra)", borderRadius: "var(--r-sm)", fontSize: 15, color: "var(--terra)", marginBottom: 4 }}>
+                {apiError}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} style={ms.form} noValidate>
               <label style={ms.label}>
                 Parent name
-                <input required style={ms.input} value={form.parentName}
-                  onChange={e => set("parentName", e.target.value)} placeholder="e.g. Sarah" />
+                <input style={{ ...ms.input, ...(errors.parentName ? INPUT_ERR : {}) }}
+                  value={form.parentName} onChange={e => set("parentName", e.target.value)}
+                  placeholder="e.g. Sarah" />
+                {errors.parentName && <span style={ERR}>{errors.parentName}</span>}
+              </label>
+
+              <label style={ms.label}>
+                Email
+                <input type="email" style={{ ...ms.input, ...(errors.email ? INPUT_ERR : {}) }}
+                  value={form.email} onChange={e => set("email", e.target.value)}
+                  placeholder="e.g. sarah@email.com" />
+                {errors.email && <span style={ERR}>{errors.email}</span>}
+              </label>
+
+              <label style={ms.label}>
+                Phone <span style={{ fontWeight: 400, color: "var(--ink-faint)" }}>(optional)</span>
+                <input type="tel" style={ms.input}
+                  value={form.phone} onChange={e => set("phone", e.target.value)}
+                  placeholder="e.g. 604-555-0100" />
               </label>
 
               <label style={ms.label}>
                 Kid(s) name
-                <input required style={ms.input} value={form.kidsName}
-                  onChange={e => set("kidsName", e.target.value)} placeholder="e.g. Emma, Liam" />
+                <input style={{ ...ms.input, ...(errors.kidsName ? INPUT_ERR : {}) }}
+                  value={form.kidsName} onChange={e => set("kidsName", e.target.value)}
+                  placeholder="e.g. Emma, Liam" />
+                {errors.kidsName && <span style={ERR}>{errors.kidsName}</span>}
               </label>
 
               <div style={ms.row}>
                 <label style={{ ...ms.label, flex: 1 }}>
                   Child's age
-                  <input required style={ms.input} type="number" min="7" max="13"
-                    value={form.age} onChange={e => set("age", e.target.value)} placeholder="e.g. 9" />
+                  <input type="number" min="7" max="13"
+                    style={{ ...ms.input, ...(errors.age ? INPUT_ERR : {}) }}
+                    value={form.age} onChange={e => set("age", e.target.value)}
+                    placeholder="e.g. 9" />
+                  {errors.age && <span style={ERR}>{errors.age}</span>}
                 </label>
                 <label style={{ ...ms.label, flex: 1 }}>
                   Child's grade
-                  <input required style={ms.input} value={form.grade}
-                    onChange={e => set("grade", e.target.value)} placeholder="e.g. Grade 4" />
+                  <input style={{ ...ms.input, ...(errors.grade ? INPUT_ERR : {}) }}
+                    value={form.grade} onChange={e => set("grade", e.target.value)}
+                    placeholder="e.g. Grade 4" />
+                  {errors.grade && <span style={ERR}>{errors.grade}</span>}
                 </label>
               </div>
 
               <label style={ms.label}>
                 Location
-                <select required style={{ ...ms.input, ...ms.select }} value={form.location}
-                  onChange={e => set("location", e.target.value)}>
+                <select style={{ ...ms.input, ...ms.select, ...(errors.location ? INPUT_ERR : {}) }}
+                  value={form.location} onChange={e => set("location", e.target.value)}>
                   <option value="" disabled>Choose a location…</option>
                   <option value="surrey-clayton">Surrey – Clayton</option>
                   <option value="surrey-city-centre">Surrey – City Centre</option>
                   <option value="surrey-fleetwood">Surrey – Fleetwood</option>
                 </select>
+                {errors.location && <span style={ERR}>{errors.location}</span>}
               </label>
 
-              <button type="submit" className="btn btn-primary" style={ms.submit}>
-                Count me in →
+              <button type="submit" className="btn btn-primary"
+                style={{ ...ms.submit, opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}
+                disabled={loading}>
+                {loading ? "Sending…" : "Count me in →"}
               </button>
             </form>
           </>
