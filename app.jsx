@@ -37,6 +37,35 @@ function useReveal() {
 }
 
 /* ===================================================================== */
+/* ANNOUNCEMENT BANNER                                                   */
+/* ===================================================================== */
+function AnnouncementBanner() {
+  return (
+    <div style={{
+      background: "var(--green)",
+      color: "#fff",
+      textAlign: "center",
+      padding: "11px 20px",
+      fontFamily: "var(--font-display)",
+      fontWeight: 600,
+      fontSize: 15,
+      letterSpacing: "0.01em",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 10,
+    }}>
+      <span style={{ fontSize: 18 }}>✎</span>
+      <span>New batch starting <strong>June 3rd</strong> — spots are limited.{" "}
+        <a href="#enroll" style={{ color: "#fff", textDecoration: "underline", textUnderlineOffset: 3 }}>
+          Reserve your spot →
+        </a>
+      </span>
+    </div>
+  );
+}
+
+/* ===================================================================== */
 /* HERO                                                                  */
 /* ===================================================================== */
 function Hero({ band, setBand }) {
@@ -75,7 +104,7 @@ function Hero({ band, setBand }) {
         {[
           ["7", "writing types mastered"],
           ["3–6", "grade levels covered"],
-          ["4 wks", "to a first published piece"],
+          ["4 wks", "1 session/week · to first piece"],
           ["1:6", "teacher to student ratio"],
         ].map(([n, l]) => (
           <div key={l} style={hs.stat}>
@@ -634,6 +663,7 @@ function App() {
 
   return (
     <div>
+      <AnnouncementBanner />
       <Hero band={band} setBand={setBand} />
       <PricingStrip />
       <Curriculum band={band} />
