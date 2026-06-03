@@ -133,7 +133,7 @@ function PricingStrip() {
       <div className="wrap" style={prs.inner}>
         <div style={prs.label}>
           <span style={prs.eyebrow}>Program pricing</span>
-          <span style={prs.tagline}>Start free. Grow at your own pace.</span>
+          <span style={prs.tagline}>Start free. Bundle and save.</span>
         </div>
 
         <div style={prs.cards}>
@@ -151,14 +151,37 @@ function PricingStrip() {
             <svg viewBox="0 0 32 16" width="36" height="18" fill="none" stroke="var(--ink-faint)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 8h26M22 2l7 6-7 6"/></svg>
           </div>
 
-          {/* Modules 2+ — $89 */}
+          {/* Single module — $89 */}
           <div style={{ ...prs.card, ...prs.cardPaid }}>
             <div style={prs.cardTop}>
-              <span style={prs.step}>Each module after</span>
+              <span style={prs.step}>Per module</span>
               <span style={prs.priceBadge}>$89</span>
             </div>
-            <div style={prs.cardName}>7 writing types to explore</div>
-            <div style={prs.cardDesc}>Narrative, poetry, persuasive, and more — unlock each one as you go.</div>
+            <div style={prs.cardName}>Any single module</div>
+            <div style={prs.cardDesc}>Pick one writing type and go at your own pace.</div>
+          </div>
+
+          {/* 3-pack — $240 (save 10%) */}
+          <div style={{ ...prs.card, ...prs.cardBundle }}>
+            <div style={prs.cardTop}>
+              <span style={prs.step}>3-Module Pack</span>
+              <span style={prs.priceBadge}>$240</span>
+            </div>
+            <div style={prs.cardName}>Any 3 modules</div>
+            <div style={prs.cardDesc}>Choose any three writing types at a locked-in price.</div>
+            <span style={prs.saveBadge}>Save 10%</span>
+          </div>
+
+          {/* Full program — $454 (save 15%) */}
+          <div style={{ ...prs.card, ...prs.cardBest }}>
+            <div style={prs.cardTop}>
+              <span style={prs.step}>Full Program</span>
+              <span style={prs.priceBadge}>$454</span>
+            </div>
+            <div style={prs.bestLabel}>Best value</div>
+            <div style={prs.cardName}>All 6 modules</div>
+            <div style={prs.cardDesc}>The complete writing journey — all in, one price.</div>
+            <span style={prs.saveBadgeBest}>Save 15%</span>
           </div>
         </div>
       </div>
@@ -186,7 +209,7 @@ function Curriculum({ band }) {
             <span style={cs.prereqRibbonText}>
               <strong>Every form below begins with the paragraph.</strong> Level 1 builds that
               foundation first — it's the prerequisite that makes all seven genres possible.{" "}
-              <strong style={{ color: "var(--green-deep)" }}>Level 1 is free. Each module after is $89.</strong>
+              <strong style={{ color: "var(--green-deep)" }}>Level 1 is free. Each module after is $89 — or bundle 3 for $240, all 6 for $454.</strong>
             </span>
             <a href="#level1" style={cs.prereqLink}>Start with Level 1 →</a>
           </div>
@@ -219,7 +242,7 @@ function TypeCard({ w, band, index }) {
       <p style={cs.cardText} key={band}>{text}</p>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
         <span style={{ ...cs.levelTag, background: f.tint, color: f.d }}>
-          {band === "g56" ? "Grades 5–6 · with craft" : "Grades 3–4 · foundation"}
+          {band === "g56" ? "Grades 5–6" : "Grades 3–4"}
         </span>
         <span style={cs.priceTag}>$89</span>
       </div>

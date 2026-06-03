@@ -126,6 +126,8 @@ const prs = {
   card: { flex: "1 1 220px", borderRadius: "var(--r-md)", padding: "20px 22px", border: "1.5px solid var(--line)", background: "var(--paper)", boxShadow: "var(--shadow-sm)" },
   cardFree: { borderColor: "var(--green)", background: "var(--green-tint)" },
   cardPaid: { borderColor: "var(--line)" },
+  cardBundle: { borderColor: "var(--amber)", background: "var(--amber-tint)" },
+  cardBest: { borderColor: "var(--green)", background: "var(--green-tint)", boxShadow: "0 0 0 2px var(--green)" },
 
   cardTop: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 },
   step: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--ink-faint)" },
@@ -135,6 +137,10 @@ const prs = {
 
   cardName: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 17, color: "var(--ink)", marginBottom: 6 },
   cardDesc: { fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.5 },
+
+  saveBadge: { display: "inline-block", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12, color: "var(--amber-deep)", background: "rgba(230,162,60,.15)", border: "1.5px solid var(--amber)", borderRadius: 999, padding: "2px 10px", whiteSpace: "nowrap", marginTop: 8 },
+  saveBadgeBest: { display: "inline-block", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12, color: "var(--green-deep)", background: "rgba(31,111,84,.1)", border: "1.5px solid var(--green)", borderRadius: 999, padding: "2px 10px", whiteSpace: "nowrap", marginTop: 8 },
+  bestLabel: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--green-deep)", marginBottom: 6 },
 
   arrow: { flex: "0 0 auto", display: "flex", alignItems: "center" },
 };
