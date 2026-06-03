@@ -42,25 +42,53 @@ function useReveal() {
 function AnnouncementBanner() {
   return (
     <div style={{
-      background: "var(--green)",
+      background: "linear-gradient(90deg, var(--green-deep) 0%, var(--green) 100%)",
       color: "#fff",
       textAlign: "center",
-      padding: "11px 20px",
+      padding: "16px 24px",
       fontFamily: "var(--font-display)",
-      fontWeight: 600,
-      fontSize: 15,
-      letterSpacing: "0.01em",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      gap: 10,
+      gap: 16,
+      flexWrap: "wrap",
+      boxShadow: "0 3px 16px -4px rgba(31,111,84,.45)",
     }}>
-      <span style={{ fontSize: 18 }}>✎</span>
-      <span>New batch starting <strong>June 3rd</strong> — spots are limited.{" "}
-        <a href="#enroll" style={{ color: "#fff", textDecoration: "underline", textUnderlineOffset: 3 }}>
-          Reserve your spot →
-        </a>
+      <span style={{
+        background: "rgba(255,255,255,.18)",
+        border: "1.5px solid rgba(255,255,255,.35)",
+        borderRadius: 999,
+        padding: "4px 14px",
+        fontSize: 13,
+        fontWeight: 700,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+      }}>New Batch</span>
+      <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.01em" }}>
+        Starting <span style={{
+          background: "var(--amber)",
+          color: "var(--ink)",
+          borderRadius: 6,
+          padding: "2px 10px",
+          marginLeft: 4,
+          fontSize: 19,
+        }}>June 4th</span>
       </span>
+      <span style={{ opacity: 0.75, fontSize: 15, fontWeight: 500 }}>·  Spots are limited</span>
+      <a href="#enroll" style={{
+        background: "#fff",
+        color: "var(--green-deep)",
+        fontWeight: 700,
+        fontSize: 14,
+        padding: "8px 20px",
+        borderRadius: 999,
+        textDecoration: "none",
+        letterSpacing: "0.02em",
+        boxShadow: "0 2px 8px -2px rgba(0,0,0,.18)",
+        whiteSpace: "nowrap",
+      }}>
+        Reserve your spot →
+      </a>
     </div>
   );
 }
