@@ -1,5 +1,4 @@
 // app.jsx — The Complete Writer Program microsite
-import { Analytics } from "@vercel/analytics/react";
 const { useState, useEffect, useRef } = React;
 const { hs, cs, ps, ls, fs, ms, prs } = window;
 
@@ -700,7 +699,6 @@ function App() {
       <Level1 />
       <CTA />
 
-      <Analytics />
       <TweaksPanel>
         <TweakSection label="Theme" />
         <TweakRadio label="Accent color" value={t.accent}
