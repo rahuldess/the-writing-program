@@ -408,6 +408,16 @@ function Level1() {
                 </div>
               </div>
             </div>
+            <div style={{
+              display: "flex", alignItems: "flex-start", gap: 10, marginTop: 22,
+              background: "var(--amber-tint)", border: "1.5px solid var(--amber)",
+              borderRadius: "var(--r-sm)", padding: "12px 16px", maxWidth: 620,
+            }}>
+              <span style={{ fontSize: 18, lineHeight: 1 }}>⚠</span>
+              <p style={{ margin: 0, fontSize: 14.5, color: "var(--ink)", lineHeight: 1.5 }}>
+                <strong>No makeup classes.</strong> This is a small, structured batch that runs on a fixed weekly schedule. Missed sessions cannot be rescheduled or carried over.
+              </p>
+            </div>
           </div>
 
           <FoundationBridge />
