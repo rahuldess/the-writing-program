@@ -72,8 +72,9 @@ function AnnouncementBanner() {
           padding: "2px 10px",
           marginLeft: 4,
           fontSize: 19,
-        }}>June 4th</span>
+        }}>July 7th</span>
       </span>
+      <span style={{ opacity: 0.85, fontSize: 14, fontWeight: 500 }}>Fleetwood · Batch 1: 4:30–5:30 pm &nbsp;|&nbsp; Batch 2: 5:40–6:40 pm</span>
       <span style={{ opacity: 0.75, fontSize: 15, fontWeight: 500 }}>·  Spots are limited</span>
       <a href="#enroll" style={{
         background: "#fff",
@@ -118,7 +119,7 @@ function Hero({ band, setBand }) {
           </div>
 
           <div style={hs.ctaRow}>
-            <a href="#level1" className="btn btn-primary">Start with Level 1</a>
+            <a href="#level1" className="btn btn-primary">Start with the Foundation</a>
             <a href="#curriculum" className="btn btn-ghost">Explore the curriculum</a>
           </div>
         </div>
@@ -130,8 +131,8 @@ function Hero({ band, setBand }) {
 
       <div className="wrap" style={hs.statsWrap}>
         {[
-          ["7", "writing types mastered"],
-          ["3–6", "grade levels covered"],
+          ["3", "progressive levels"],
+          ["6", "writing forms mastered"],
           ["4 wks", "1 session/week · to first piece"],
           ["1:6", "teacher to student ratio"],
         ].map(([n, l]) => (
@@ -194,10 +195,10 @@ function PricingStrip() {
         </div>
 
         <div style={prs.cards}>
-          {/* Level 1 — free */}
+          {/* Foundation — free */}
           <div style={{ ...prs.card, ...prs.cardFree }}>
             <div style={prs.cardTop}>
-              <span style={prs.step}>Level 1</span>
+              <span style={prs.step}>Foundation</span>
               <span style={prs.freeBadge}>FREE</span>
             </div>
             <div style={prs.cardName}>The Paragraph Foundation</div>
@@ -249,26 +250,21 @@ function PricingStrip() {
 /* ===================================================================== */
 /* CURRICULUM                                                            */
 /* ===================================================================== */
-function Curriculum({ band }) {
+function Curriculum() {
   return (
     <section id="curriculum" className="section">
       <div className="wrap">
         <div className="section-head reveal">
           <span className="kicker">The Curriculum</span>
-          <h2>Seven kinds of writing,<br/>one growing writer.</h2>
-          <p>
-            You're viewing what students do in{" "}
-            <strong style={{ color: "var(--accent)" }}>{band === "g56" ? "Grades 5–6" : "Grades 3–4"}</strong>.
-            Flip the switch to compare.
-          </p>
+          <h2>Three levels. Six writing forms.<br/>One confident writer.</h2>
           <div style={cs.prereqRibbon}>
             <span style={cs.prereqRibbonIcon} aria-hidden="true">1</span>
             <span style={cs.prereqRibbonText}>
-              <strong>Every form below begins with the paragraph.</strong> Level 1 builds that
-              foundation first — it's the prerequisite that makes all seven genres possible.{" "}
-              <strong style={{ color: "var(--green-deep)" }}>Level 1 is free. Each module after is $89 — or bundle 3 for $240, all 6 for $454.</strong>
+              <strong>Every level begins with the paragraph foundation.</strong> The foundation
+              is the prerequisite that makes all six forms possible.{" "}
+              <strong style={{ color: "var(--green-deep)" }}>Foundation is free. Each module after is $89 — or bundle 3 for $240, all 6 for $454.</strong>
             </span>
-            <a href="#level1" style={cs.prereqLink}>Start with Level 1 →</a>
+            <a href="#level1" style={cs.prereqLink}>Start with Foundation →</a>
           </div>
           <div style={{
             display: "flex", alignItems: "flex-start", gap: 10, marginTop: 14,
@@ -282,35 +278,60 @@ function Curriculum({ band }) {
           </div>
         </div>
 
-        <div style={cs.grid}>
-          {WRITING_TYPES.map((w, i) => (
-            <TypeCard key={w.id} w={w} band={band} index={i} />
-          ))}
-        </div>
+        {LEVELS.map((lv) => {
+          const f = FAM[lv.family];
+          const types = WRITING_TYPES.filter(w => w.level === lv.id);
+          return (
+            <div key={lv.id} className="reveal" style={{ marginBottom: 52 }}>
+              <div style={{
+                display: "flex", alignItems: "center", gap: 12, marginBottom: 24,
+                paddingBottom: 14, borderBottom: `2px solid ${f.c}`,
+              }}>
+                <span style={{
+                  background: f.c, color: "#fff", fontWeight: 700, fontSize: 12,
+                  letterSpacing: "0.1em", textTransform: "uppercase",
+                  padding: "4px 12px", borderRadius: 999,
+                }}>{lv.num}</span>
+                <span style={{ fontWeight: 700, fontSize: 18, color: f.d }}>{lv.focus}</span>
+              </div>
+              <div style={cs.grid}>
+                {types.map((w, i) => (
+                  <TypeCard key={w.id} w={w} index={i} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 }
 
-function TypeCard({ w, band, index }) {
+function TypeCard({ w, index }) {
   const f = FAM[w.family];
-  const text = band === "g56" ? w.g56 : w.g34;
   return (
-    <article className="reveal" style={{ ...cs.card, transitionDelay: `${(index % 3) * 80}ms` }}>
+    <article className="reveal" style={{ ...cs.card, transitionDelay: `${(index % 2) * 80}ms` }}>
       <div style={cs.cardTop}>
         <div style={{ ...cs.glyphWrap, background: f.tint }}>
           <Glyph name={w.glyph} color={f.d} />
         </div>
-        <span style={{ ...cs.num, color: f.c }}>{String(index + 1).padStart(2, "0")}</span>
       </div>
       <h3 style={cs.cardTitle}>{w.title}</h3>
       <p style={cs.blurb}>{w.blurb}</p>
       <div style={cs.divider} />
-      <p style={cs.cardText} key={band}>{text}</p>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
-        <span style={{ ...cs.levelTag, background: f.tint, color: f.d }}>
-          {band === "g56" ? "Grades 5–6" : "Grades 3–4"}
-        </span>
+      <p style={cs.cardText}>{w.desc}</p>
+      <div style={{
+        background: f.tint, border: `1px solid ${f.c}`,
+        borderRadius: "var(--r-sm)", padding: "10px 12px", marginTop: 10,
+      }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: f.d, marginBottom: 4 }}>
+          Final Publishing Project
+        </div>
+        <div style={{ fontSize: 13.5, color: "var(--ink)", lineHeight: 1.5 }}>
+          <strong>{w.project.title}:</strong> {w.project.detail}
+        </div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: 12 }}>
         <span style={cs.priceTag}>$89</span>
       </div>
     </article>
@@ -402,7 +423,7 @@ function Level1() {
             <div style={ls.bannerLeft}>
               <span className="chip" style={ls.startChip}>★ Required first step · the foundation</span>
               <span className="chip" style={ls.freeChip}>FREE</span>
-              <h2 style={ls.h2}>Level 1: The Paragraph Foundation</h2>
+              <h2 style={ls.h2}>The Paragraph Foundation</h2>
               <p className="hand" style={ls.prereqLine}>{LEVEL1.prereqLine}</p>
               <div style={ls.prereqBox}>{LEVEL1.prereq}</div>
               <div style={ls.metaRow}>
@@ -444,7 +465,7 @@ function Level1() {
         {/* outcomes */}
         <div style={ls.outcomeBlock}>
           <div className="reveal" style={ls.outcomeHead}>
-            <span className="kicker">By the end of Level 1</span>
+            <span className="kicker">By the end of the Foundation</span>
             <h3 style={ls.outcomeTitle}>Your child will be able to…</h3>
           </div>
           <div style={ls.outcomeGrid}>
@@ -704,7 +725,7 @@ function App() {
       <AnnouncementBanner />
       <Hero band={band} setBand={setBand} />
       <PricingStrip />
-      <Curriculum band={band} />
+      <Curriculum />
       <Progression band={band} />
       <Level1 />
       <CTA />

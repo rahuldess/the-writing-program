@@ -1,69 +1,72 @@
 // data.jsx — content for The Complete Writer Program
 // Colors cycle across green / amber / terracotta families for visual rhythm.
 
+const LEVELS = [
+  { id: "l1", num: "Level 1", focus: "Creative Expression",  family: "green" },
+  { id: "l2", num: "Level 2", focus: "Purposeful Writing",   family: "amber" },
+  { id: "l3", num: "Level 3", focus: "Advanced Writing",     family: "terra" },
+];
+
 const WRITING_TYPES = [
   {
     id: "descriptive",
-    title: "Descriptive Paragraphs",
+    level: "l1",
+    title: "Descriptive Writing",
     glyph: "lines",
     family: "green",
     blurb: "Painting pictures with words.",
-    g34: "Describe people, places, objects, and events using sensory details, descriptive vocabulary, and clear organization.",
-    g56: "Use vivid imagery, precise word choice, figurative language — similes, metaphors, personification — and varied sentence structures to create engaging descriptions.",
-  },
-  {
-    id: "personal",
-    title: "Personal Narratives",
-    glyph: "heart",
-    family: "terra",
-    blurb: "Telling true stories from real life.",
-    g34: "Write about real experiences from their own lives — sharing events, feelings, and personal connections in a logical sequence.",
-    g56: "Develop voice, reflection, dialogue, and descriptive details to create more engaging and meaningful personal narratives.",
+    desc: "Students learn how to describe people, places, objects, and events using interesting vocabulary, sensory details, and clear organization to help readers create a picture in their mind.",
+    project: { title: "Descriptive Snapshot", detail: "Students create a descriptive piece about a favourite place, person, object, or memory, accompanied by an illustration." },
   },
   {
     id: "narrative",
-    title: "Narrative & Story Writing",
+    level: "l1",
+    title: "Narrative Writing",
     glyph: "star",
-    family: "amber",
+    family: "green",
     blurb: "Inventing characters and worlds.",
-    g34: "Create stories with characters, settings, and a clear beginning, middle, and end — learning about plot, conflict, and resolution.",
-    g56: "Develop complex plots, character development, dialogue, descriptive settings, and techniques such as foreshadowing and suspense.",
+    desc: "Learn to write engaging stories and personal experiences with strong characters, interesting settings, dialogue, and a clear story structure.",
+    project: { title: "My Story", detail: "Students write, edit, illustrate, and publish their own short story." },
   },
   {
     id: "letter",
+    level: "l2",
     title: "Letter Writing",
     glyph: "envelope",
-    family: "green",
+    family: "amber",
     blurb: "Writing with a reader in mind.",
-    g34: "Write letters for different purposes using appropriate greetings, closings, and basic audience awareness.",
-    g56: "Adapt tone, voice, and language to suit different audiences and purposes, while organizing ideas clearly and effectively.",
+    desc: "Students learn how to write letters for different audiences and purposes using the correct format, appropriate tone, and clear communication. Covers both friendly and formal letters.",
+    project: { title: "A Letter to My Future Self", detail: "Students write and decorate a meaningful letter — to their future self or someone who inspires them — that can be kept as a special memory." },
   },
   {
     id: "informative",
-    title: "Informative & Expository",
+    level: "l2",
+    title: "Informative Writing",
     glyph: "book",
-    family: "terra",
+    family: "amber",
     blurb: "Explaining the world clearly.",
-    g34: "Explain topics using facts, examples, and clear organization — beginning to learn paragraph structure and topic sentences.",
-    g56: "Conduct research, organize ideas into multi-paragraph pieces, use supporting evidence, and incorporate text features and domain-specific vocabulary.",
+    desc: "Students learn how to explain topics clearly using facts, examples, research, and well-organized paragraphs to teach or inform the reader.",
+    project: { title: "My Mini Research Project", detail: "Students research a topic of interest (e.g., an animal, country, sport, or invention) and create an informative sheet with facts, headings, and illustrations." },
   },
   {
     id: "persuasive",
+    level: "l3",
     title: "Persuasive Writing",
     glyph: "spark",
-    family: "amber",
+    family: "terra",
     blurb: "Making a case that convinces.",
-    g34: "Express opinions and support them with reasons and examples.",
-    g56: "Build strong arguments using evidence, persuasive techniques, counterarguments, and logical reasoning to support a position.",
+    desc: "Students learn how to express their opinions, support them with strong reasons and evidence, and persuade readers through clear and logical arguments.",
+    project: { title: "Persuasive Campaign Project", detail: "Students create a persuasive piece — a travel brochure, advertisement, speech, or poster — encouraging others to visit a place, try a product, or support a cause." },
   },
   {
     id: "poetry",
+    level: "l3",
     title: "Poetry Writing",
     glyph: "quote",
-    family: "green",
+    family: "terra",
     blurb: "Playing with rhythm and imagery.",
-    g34: "Explore rhythm, rhyme, imagery, and creative expression through a variety of poetry forms.",
-    g56: "Experiment with figurative language, symbolism, mood, tone, poetic devices, and a wider range of poetic structures to communicate deeper meaning.",
+    desc: "Students explore a variety of poetry forms while using rhythm, imagery, figurative language, and creative expression to communicate ideas and emotions.",
+    project: { title: "My Poetry Collection", detail: "Students compile their favourite poems into a beautifully illustrated poetry anthology to share with family and friends." },
   },
 ];
 
@@ -115,4 +118,4 @@ const LEVEL1 = {
   ],
 };
 
-Object.assign(window, { WRITING_TYPES, PROGRESSION, LEVEL1 });
+Object.assign(window, { LEVELS, WRITING_TYPES, PROGRESSION, LEVEL1 });
