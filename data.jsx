@@ -118,4 +118,51 @@ const LEVEL1 = {
   ],
 };
 
-Object.assign(window, { LEVELS, WRITING_TYPES, PROGRESSION, LEVEL1 });
+const PRICING_TIERS = [
+  {
+    id: "single",
+    step: "Single Module",
+    modules: "1 module",
+    price: "$89",
+    originalPrice: null,
+    save: null,
+    desc: "Perfect for exploring one topic at your own pace.",
+    cta: "Reserve your spot",
+    highlight: null,
+  },
+  {
+    id: "level",
+    step: "One Level",
+    modules: "2 modules",
+    price: "$159",
+    originalPrice: "$178",
+    save: "Save $19",
+    desc: "Complete one full level and build a strong foundation.",
+    cta: "Reserve your spot",
+    highlight: null,
+  },
+  {
+    id: "two-levels",
+    step: "Two Levels",
+    modules: "4 modules",
+    price: "$299",
+    originalPrice: "$356",
+    save: "Save $57",
+    desc: "Deepen skills across two levels of the program.",
+    cta: "Reserve your spot",
+    highlight: "popular",
+  },
+  {
+    id: "complete",
+    step: "Complete Writer Program",
+    modules: "All 3 levels · 6 modules",
+    price: "$449",
+    originalPrice: "$534",
+    save: "Save $85",
+    desc: "The full journey — every level, every module. Includes a 1:1 progress review and printed portfolio at completion.",
+    cta: "Enroll in full program",
+    highlight: "best",
+  },
+];
+
+Object.assign(window, { LEVELS, WRITING_TYPES, PROGRESSION, LEVEL1, PRICING_TIERS });

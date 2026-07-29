@@ -116,33 +116,26 @@ const ls = {
 };
 
 const prs = {
-  strip: { background: "var(--paper-2)", borderTop: "1.5px solid var(--line)", borderBottom: "1.5px solid var(--line)", padding: "36px 0" },
-  inner: { display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" },
-  label: { flex: "0 0 auto", display: "flex", flexDirection: "column", gap: 6, minWidth: 180 },
-  eyebrow: { fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--ink-faint)" },
-  tagline: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 20, color: "var(--ink)", lineHeight: 1.2 },
+  card: { position: "relative", display: "flex", flexDirection: "column", background: "var(--paper)", border: "1.5px solid var(--line)", borderRadius: "var(--r-lg)", padding: "30px 26px 26px", boxShadow: "var(--shadow-sm)", transition: "transform .2s ease, box-shadow .2s ease" },
+  cardPopular: { borderColor: "var(--green)", boxShadow: "0 0 0 2px var(--green-tint), var(--shadow-md)" },
+  cardBest: { borderColor: "var(--green)", borderWidth: 2.5, background: "var(--green-tint)", boxShadow: "0 0 0 3px var(--green-tint), var(--shadow-lg)", padding: "58px 28px 30px", overflow: "hidden" },
 
-  cards: { flex: 1, display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" },
-  card: { flex: "1 1 220px", borderRadius: "var(--r-md)", padding: "20px 22px", border: "1.5px solid var(--line)", background: "var(--paper)", boxShadow: "var(--shadow-sm)" },
-  cardFree: { borderColor: "var(--green)", background: "var(--green-tint)" },
-  cardPaid: { borderColor: "var(--line)" },
-  cardBundle: { borderColor: "var(--amber)", background: "var(--amber-tint)" },
-  cardBest: { borderColor: "var(--green)", background: "var(--green-tint)", boxShadow: "0 0 0 2px var(--green)" },
+  ribbon: { position: "absolute", top: 0, left: 0, right: 0, background: "linear-gradient(90deg, var(--green-deep), var(--green))", color: "#fff", textAlign: "center", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12.5, letterSpacing: "0.08em", textTransform: "uppercase", padding: "9px 12px" },
+  popularBadge: { alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.06em", textTransform: "uppercase", color: "#fff", background: "var(--green)", borderRadius: 999, padding: "5px 12px", marginBottom: 14 },
 
-  cardTop: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 },
-  step: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--ink-faint)" },
+  step: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 16, color: "var(--ink)" },
+  modules: { fontSize: 13.5, color: "var(--ink-faint)", marginTop: 2, marginBottom: 20 },
 
-  freeBadge: { fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 18, color: "var(--green-deep)", background: "var(--paper)", border: "2px solid var(--green)", borderRadius: 999, padding: "3px 14px", letterSpacing: "0.06em" },
-  priceBadge: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, color: "var(--ink)", background: "var(--paper-2)", border: "1.5px solid var(--line)", borderRadius: 999, padding: "3px 14px" },
+  originalPrice: { display: "block", fontSize: 15, fontWeight: 400, color: "var(--ink-faint)", textDecoration: "line-through" },
+  price: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 36, color: "var(--ink)", lineHeight: 1.15, marginBottom: 8 },
 
-  cardName: { fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 17, color: "var(--ink)", marginBottom: 6 },
-  cardDesc: { fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.5 },
+  saveBadge: { alignSelf: "flex-start", display: "inline-block", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12.5, color: "var(--amber-deep)", background: "var(--amber-tint)", border: "1.5px solid var(--amber)", borderRadius: 999, padding: "3px 12px", marginBottom: 16 },
 
-  saveBadge: { display: "inline-block", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12, color: "var(--amber-deep)", background: "rgba(230,162,60,.15)", border: "1.5px solid var(--amber)", borderRadius: 999, padding: "2px 10px", whiteSpace: "nowrap", marginTop: 8 },
-  saveBadgeBest: { display: "inline-block", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 12, color: "var(--green-deep)", background: "rgba(31,111,84,.1)", border: "1.5px solid var(--green)", borderRadius: 999, padding: "2px 10px", whiteSpace: "nowrap", marginTop: 8 },
-  bestLabel: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--green-deep)", marginBottom: 6 },
+  desc: { fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.55, flex: 1, marginBottom: 22 },
 
-  arrow: { flex: "0 0 auto", display: "flex", alignItems: "center" },
+  cta: { justifyContent: "center", width: "100%", boxSizing: "border-box", fontSize: 16, padding: "13px 20px" },
+
+  note: { textAlign: "center", fontSize: 14.5, color: "var(--ink-faint)", marginTop: 34 },
 };
 
 const fs = {

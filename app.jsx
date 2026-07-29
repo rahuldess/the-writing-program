@@ -183,67 +183,54 @@ function PaperCard({ band }) {
 }
 
 /* ===================================================================== */
-/* PRICING STRIP                                                         */
+/* PRICING                                                               */
 /* ===================================================================== */
-function PricingStrip() {
+function Pricing() {
   return (
-    <section style={prs.strip}>
-      <div className="wrap" style={prs.inner}>
-        <div style={prs.label}>
-          <span style={prs.eyebrow}>Program pricing</span>
-          <span style={prs.tagline}>Start free. Bundle and save.</span>
+    <section id="pricing" className="section" style={{ background: "var(--paper-2)" }}>
+      <div className="wrap">
+        <div className="section-head reveal" style={{ textAlign: "center", margin: "0 auto 52px" }}>
+          <span className="kicker" style={{ justifyContent: "center" }}>Program Pricing</span>
+          <h2>Choose your writer's journey</h2>
+          <p style={{ margin: "0 auto" }}>Start with a single module or commit to the full program — the more you bundle, the more you save.</p>
         </div>
 
-        <div style={prs.cards}>
-          {/* Foundation — free */}
-          <div style={{ ...prs.card, ...prs.cardFree }}>
-            <div style={prs.cardTop}>
-              <span style={prs.step}>Foundation</span>
-              <span style={prs.freeBadge}>FREE</span>
-            </div>
-            <div style={prs.cardName}>The Paragraph Foundation</div>
-            <div style={prs.cardDesc}>The required first step — 4 weeks, face-to-face. No cost to begin.</div>
-          </div>
-
-          <div style={prs.arrow} aria-hidden="true">
-            <svg viewBox="0 0 32 16" width="36" height="18" fill="none" stroke="var(--ink-faint)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 8h26M22 2l7 6-7 6"/></svg>
-          </div>
-
-          {/* Single module — $89 */}
-          <div style={{ ...prs.card, ...prs.cardPaid }}>
-            <div style={prs.cardTop}>
-              <span style={prs.step}>Per module</span>
-              <span style={prs.priceBadge}>$89</span>
-            </div>
-            <div style={prs.cardName}>Any single module</div>
-            <div style={prs.cardDesc}>Pick one writing type and go at your own pace.</div>
-          </div>
-
-          {/* 3-pack — $240 (save 10%) */}
-          <div style={{ ...prs.card, ...prs.cardBundle }}>
-            <div style={prs.cardTop}>
-              <span style={prs.step}>3-Module Pack</span>
-              <span style={prs.priceBadge}>$240</span>
-            </div>
-            <div style={prs.cardName}>Any 3 modules</div>
-            <div style={prs.cardDesc}>Choose any three writing types at a locked-in price.</div>
-            <span style={prs.saveBadge}>Save 10%</span>
-          </div>
-
-          {/* Full program — $454 (save 15%) */}
-          <div style={{ ...prs.card, ...prs.cardBest }}>
-            <div style={prs.cardTop}>
-              <span style={prs.step}>Full Program</span>
-              <span style={prs.priceBadge}>$454</span>
-            </div>
-            <div style={prs.bestLabel}>Best value</div>
-            <div style={prs.cardName}>All 6 modules</div>
-            <div style={prs.cardDesc}>The complete writing journey — all in, one price.</div>
-            <span style={prs.saveBadgeBest}>Save 15%</span>
-          </div>
+        <div className="pricing-grid">
+          {PRICING_TIERS.map((tier) => (
+            <PricingCard key={tier.id} tier={tier} />
+          ))}
         </div>
+
+        <p style={prs.note}>All prices in CAD. Batches held in Fleetwood, Surrey.</p>
       </div>
     </section>
+  );
+}
+
+function PricingCard({ tier }) {
+  const isPopular = tier.highlight === "popular";
+  const isBest = tier.highlight === "best";
+  return (
+    <div className="reveal" style={{
+      ...prs.card,
+      ...(isPopular ? prs.cardPopular : null),
+      ...(isBest ? prs.cardBest : null),
+    }}>
+      {isBest && <div style={prs.ribbon}>★ Best Value</div>}
+      {isPopular && <span style={prs.popularBadge}>★ Popular</span>}
+
+      <div style={prs.step}>{tier.step}</div>
+      <div style={prs.modules}>{tier.modules}</div>
+
+      {tier.originalPrice && <span style={prs.originalPrice}>{tier.originalPrice}</span>}
+      <div style={prs.price}>{tier.price}</div>
+
+      {tier.save && <span style={prs.saveBadge}>{tier.save}</span>}
+
+      <p style={prs.desc}>{tier.desc}</p>
+
+      <a href="#enroll" className="btn btn-primary" style={prs.cta}>{tier.cta}</a>
+    </div>
   );
 }
 
@@ -262,7 +249,7 @@ function Curriculum() {
             <span style={cs.prereqRibbonText}>
               <strong>Every level begins with the paragraph foundation.</strong> The foundation
               is the prerequisite that makes all six forms possible.{" "}
-              <strong style={{ color: "var(--green-deep)" }}>Foundation is free. Each module after is $89 — or bundle 3 for $240, all 6 for $454.</strong>
+              <strong style={{ color: "var(--green-deep)" }}>Foundation is free. Each module after is $89 — or bundle a level (2 modules) for $159, two levels (4 modules) for $299, or the complete program (6 modules) for $449.</strong>
             </span>
             <a href="#level1" style={cs.prereqLink}>Start with Foundation →</a>
           </div>
@@ -724,7 +711,7 @@ function App() {
     <div>
       <AnnouncementBanner />
       <Hero band={band} setBand={setBand} />
-      <PricingStrip />
+      <Pricing />
       <Curriculum />
       <Progression band={band} />
       <Level1 />
