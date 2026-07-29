@@ -201,7 +201,7 @@ function Pricing() {
           ))}
         </div>
 
-        <p style={prs.note}>All prices in CAD. Batches held in Fleetwood, Surrey.</p>
+        <p style={prs.note}>All prices in CAD. Batches held in Clayton, City Centre & Fleetwood, Surrey.</p>
       </div>
     </section>
   );
