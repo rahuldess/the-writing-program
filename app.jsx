@@ -72,9 +72,9 @@ function AnnouncementBanner() {
           padding: "2px 10px",
           marginLeft: 4,
           fontSize: 19,
-        }}>July 7th</span>
+        }}>Aug 4th</span>
       </span>
-      <span style={{ opacity: 0.85, fontSize: 14, fontWeight: 500 }}>Fleetwood · Batch 1: 4:30–5:30 pm &nbsp;|&nbsp; Batch 2: 5:40–6:40 pm</span>
+      <span style={{ opacity: 0.85, fontSize: 14, fontWeight: 500 }}>Clayton · 6:40–7:40 pm</span>
       <span style={{ opacity: 0.75, fontSize: 15, fontWeight: 500 }}>·  Spots are limited</span>
       <a href="#enroll" style={{
         background: "#fff",
