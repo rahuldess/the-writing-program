@@ -425,6 +425,16 @@ function Level1() {
                   <div style={{ ...ls.metaV, color: "var(--green-deep)" }}>FREE</div>
                 </div>
               </div>
+              <div style={{
+                display: "flex", alignItems: "flex-start", gap: 10, marginTop: 18,
+                background: "var(--amber-tint)", border: "1.5px solid var(--amber)",
+                borderRadius: "var(--r-sm)", padding: "12px 16px", maxWidth: 620,
+              }}>
+                <span style={{ fontSize: 17, lineHeight: 1 }}>⚠</span>
+                <p style={{ margin: 0, fontSize: 14.5, color: "var(--ink)", lineHeight: 1.5 }}>
+                  <strong>$25 refundable deposit.</strong> Since spots are limited, reserving a place holds a seat exclusively for your child. The deposit is fully refunded once your child attends — it's forfeited only for a complete no-show across all four weeks of the Foundation course.
+                </p>
+              </div>
             </div>
           </div>
 
