@@ -640,9 +640,9 @@ function InterestModal({ onClose }) {
                 <select style={{ ...ms.input, ...ms.select, ...(errors.location ? INPUT_ERR : {}) }}
                   value={form.location} onChange={e => set("location", e.target.value)}>
                   <option value="" disabled>Choose a location…</option>
-                  <option value="surrey-clayton">Surrey – Clayton</option>
-                  <option value="surrey-city-centre">Surrey – City Centre</option>
-                  <option value="surrey-fleetwood">Surrey – Fleetwood</option>
+                  <option value="Surrey - Clayton">Surrey – Clayton</option>
+                  <option value="Surrey - City Centre">Surrey – City Centre</option>
+                  <option value="Surrey - Fleetwood">Surrey – Fleetwood</option>
                 </select>
                 {errors.location && <span style={ERR}>{errors.location}</span>}
               </label>
