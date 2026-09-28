@@ -64,16 +64,6 @@ function AnnouncementBanner() {
         letterSpacing: "0.1em",
         textTransform: "uppercase",
       }}>New Batch</span>
-      <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.01em" }}>
-        Starting <span style={{
-          background: "var(--amber)",
-          color: "var(--ink)",
-          borderRadius: 6,
-          padding: "2px 10px",
-          marginLeft: 4,
-          fontSize: 19,
-        }}>Aug 4th</span>
-      </span>
       <span style={{ opacity: 0.85, fontSize: 14, fontWeight: 500 }}>Clayton · 6:40–7:40 pm</span>
       <span style={{ opacity: 0.75, fontSize: 15, fontWeight: 500 }}>·  Spots are limited</span>
       <a href="#enroll" style={{
