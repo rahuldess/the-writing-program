@@ -64,8 +64,7 @@ function AnnouncementBanner() {
         letterSpacing: "0.1em",
         textTransform: "uppercase",
       }}>New Batch</span>
-      <span style={{ opacity: 0.85, fontSize: 14, fontWeight: 500 }}>Clayton · 6:40–7:40 pm</span>
-      <span style={{ opacity: 0.75, fontSize: 15, fontWeight: 500 }}>·  Spots are limited</span>
+      <span style={{ opacity: 0.75, fontSize: 15, fontWeight: 500 }}>Spots are limited</span>
       <a href="#enroll" style={{
         background: "#fff",
         color: "var(--green-deep)",
